@@ -19,14 +19,15 @@ type FormattedTime struct {
 }
 
 // NewDateTime will add a DateTimeEntry with an empty DateTime field to the FormattedTime instance
-func (f *FormattedTime) NewDateTime(key string) {
+func (f *FormattedTime) NewDateTime(key string) (dp *DateTimeEntry) {
 	var d DateTimeEntry
 	d.formattedTime = f
 	f.DateTimes[key] = &d
+	return &d
 }
 
 // AddDateTime will add a DateTimeEntry to the FormattedTime instance
-func (f *FormattedTime) AddDateTime(key string, dateTime time.Time) {
+func (f *FormattedTime) AddDateTime(key string, dateTime time.Time) (dp *DateTimeEntry) {
 	var d DateTimeEntry
 	d.formattedTime = f
 
@@ -35,4 +36,5 @@ func (f *FormattedTime) AddDateTime(key string, dateTime time.Time) {
 	d.DateTime = &dt
 
 	f.DateTimes[key] = &d
+	return &d
 }
